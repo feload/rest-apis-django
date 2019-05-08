@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 't0o(#)8*y^a9@v=o*9+kg1h$uz4q)(l(4*cjn9lrqy&r+yagmv'
+SECRET_KEY = 'ah8p$%)dxg1z^*&6ofy^^@h7=^ll*6trhz1g9(j220*xvop-&7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -38,12 +38,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # Local
-    'books.apps.BooksConfig'
+    'rest_framework',
+
+    'books.apps.BooksConfig',
+    'api.apps.ApiConfig'
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -78,8 +81,12 @@ WSGI_APPLICATION = 'library_project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'library_project',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': '192.168.56.103',
+        'PORT': '5432',
     }
 }
 
